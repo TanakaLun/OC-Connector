@@ -4,7 +4,8 @@ plugins {
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.hilt)
     // alias(libs.plugins.kotlin.kapt)
-    kotlin("kapt")
+    // kotlin("kapt")
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -93,7 +94,7 @@ dependencies {
     
     // Hilt
     implementation(libs.hilt.android)
-    kapt(libs.hilt.android.compiler)
+    ksp(libs.hilt.android.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
     
     // DataStore

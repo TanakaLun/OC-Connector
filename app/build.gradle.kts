@@ -3,7 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.hilt)
-    alias(libs.plugins.kapt)
+    alias(libs.plugins.kotlin.kapt)
 }
 
 android {
@@ -31,7 +31,6 @@ android {
             excludes += "DebugProbesKt.bin"
         }
         jniLibs {
-            // Module-specific exclusions
             excludes += setOf(
                 "lib/*/libandroidx.graphics.path.so",
                 "lib/*/libdatastore_shared_counter.so"
@@ -64,8 +63,6 @@ android {
     testOptions {
         unitTests { isIncludeAndroidResources = true }
     }
-
-    packaging { resources { excludes += "/META-INF/{AL2.0,LGPL2.1}" } }
 }
 
 dependencies {

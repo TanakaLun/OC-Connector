@@ -20,7 +20,7 @@ class MainActivity : ComponentActivity() {
         intentState.value = intent
         enableEdgeToEdge()
         setContent {
-            OConnectorTheme(darkTheme = AppLocale.darkMode) {
+            OConnectorTheme(darkThemePref = AppLocale.darkModePref) {
                 OConnectorApp(initialIntent = intent, intentState = intentState)
             }
         }

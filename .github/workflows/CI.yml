@@ -41,10 +41,22 @@ jobs:
         sed -i -E "s/versionName[[:space:]]*=[[:space:]]*['\"][^'\"]*['\"]/versionName = \"${{ steps.version_info.outputs.version_name }}\"/g" "$GRADLE_FILE"
           
     - name: Build with Gradle
+      id: gradle_build
+      continue-on-error: true
       run: ./gradlew assembleRelease
 
-    - name: Upload apk
+    - name: Upload Build Artifacts & R8 Missing Rules
+      if: always()
       uses: actions/upload-artifact@v7
       with:
-        name: release
-        path: ${{ github.workspace }}/app/build/outputs/apk/**/*.apk
+        name: build-outputs
+        path: |
+          ${{ github.workspace }}/app/build/outputs/apk/**/*.apk
+          ${{ github.workspace }}/app/build/outputs/mapping/release/missing_rules.txt
+        if-no-files-found: ignore
+
+    - name: Check Gradle Build Outcome
+      if: steps.gradle_build.outcome == 'failure'
+      run: |
+        echo "::error::Gradle build failed! Please check missing_rules.txt from the uploaded artifacts."
+        exit 1

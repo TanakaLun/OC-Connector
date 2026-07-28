@@ -12,7 +12,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectHorizontalDragGestures
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.animateItemPlacement
+import androidx.compose.foundation.lazy.animateItem
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -210,7 +210,7 @@ fun SessionsScreen(
                                     sessionCount = sessions.size,
                                     hasBusySessions = directory in busyDirectories,
                                     onClick = { onProjectClick(directory) },
-                                    modifier = Modifier.animateItemPlacement(tween(300)),
+                                    modifier = Modifier.animateItem(tween(300)),
                                 )
                             }
                         }
@@ -532,7 +532,7 @@ fun ProjectSessionsScreen(
                                                     onClick = { onSessionClick(session.id) },
                                                     onDelete = { viewModel.deleteSession(session.id, directory) },
                                                     onFork = { viewModel.forkSession(session.id, directory) },
-                                                    modifier = Modifier.animateItemPlacement(tween(300)),
+                                                    modifier = Modifier.animateItem(tween(300)),
                                                 )
                                             }
                                         } else {
@@ -579,7 +579,7 @@ fun ProjectSessionsScreen(
                                                                 viewModel.refreshChildSessions(session.id)
                                                             }
                                                         },
-                                                        modifier = Modifier.animateItemPlacement(tween(300)),
+                                                        modifier = Modifier.animateItem(tween(300)),
                                                     )
 
                                                     // Show child sessions when expanded

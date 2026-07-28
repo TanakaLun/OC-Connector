@@ -7,7 +7,7 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.animateItemPlacement
+import androidx.compose.foundation.lazy.animateItem
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -104,7 +104,7 @@ fun ServerListScreen(
                             isConnected = server.id == uiState.connectedServerId,
                             onClick = { onServerSelected(server.id) },
                             onDelete = { viewModel.deleteServer(server.id) },
-                            modifier = Modifier.animateItemPlacement(tween(300)),
+                            modifier = Modifier.animateItem(tween(300)),
                         )
                     }
                 }

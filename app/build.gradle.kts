@@ -11,12 +11,12 @@ plugins {
 
 android {
     namespace = "com.opencode.remote"
-    compileSdk = 34
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "com.opencode.remote"
-        minSdk = 26
-        targetSdk = 34
+        minSdk = 33
+        targetSdk = 37
         versionCode = 7
         versionName = "1.4.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
